@@ -17,18 +17,22 @@ body {
     font-family: "Rubik", sans-serif;
     width: 100vw;
     background-color: whitesmoke;
+    overflow: hidden;
 }
 
 /*HEADER ETC*/
 header {
     display: flex;
     color: rgb(45, 45, 45);
+    z-index: 11;
+    background-color: whitesmoke;
 }
 
 #logo {
     padding: 1rem;
     display: flex;
     cursor: pointer;
+    z-index: 11;
 }
 
 #about {
@@ -44,6 +48,7 @@ header {
 .wrapper {
     display: flex;
     width: 100%;
+    overflow: hidden;
 }
 
 .columns {
@@ -51,10 +56,37 @@ header {
     flex-direction: column;
     flex: 1;
     width: 25%;
+    z-index: 9;
+    animation-timing-function: linear;
+}
+
+#column1 {
+    animation: autoscroll 50s infinite alternate;
+}
+
+#column2 {
+    animation: autoscroll 200s linear infinite alternate;
+    animation-direction: reverse;
+
+}
+
+#column3 {
+    animation: autoscroll 90s infinite alternate;
+    animation-direction: reverse;
+}
+
+#column4 {
+    animation: autoscroll 100s infinite alternate;
+}
+
+@keyframes autoscroll {
+    0% { transform: translateY(0);}
+    100% { transform: translateY(-100vh);}
 }
 
 .columns img{
     padding: 0.5rem;
+    z-index: 9;
 }
 
 
@@ -66,4 +98,51 @@ header {
     height: 100%;
     width: 100%;
     z-index: 100;
+
+    padding: 6rem;
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    gap: 1rem;
+
+    transform: scale(0,0);
+    transform-origin: 100vw 0vh;
+    transition: transform 200ms ease-in-out;
+}
+
+.about-elements {
+    opacity: 0;
+    transition: opacity 300ms ease-out 200ms;
+}
+
+.box {
+    padding: 1rem 2rem;
+    background-color: rgb(30, 30, 30);
+}
+
+#about-page aside,
+#about-page main {
+    height: 100%;
+}
+
+.box p{
+    font-size: 1.4rem;
+    padding-bottom: 1rem;
+}
+
+ul {
+    list-style: none;
+}
+
+.box ul li a {
+    font-size: 2rem;
+    text-decoration: none;
+    color: whitesmoke;
+    position: relative;
+    left: 1rem;
+    top: .25rem;
+}
+
+.fa-2xl {
+    position: relative;
+    left: 0.3rem;
 }
